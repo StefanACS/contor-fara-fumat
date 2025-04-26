@@ -1,1 +1,75 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contor Zile Fără Fumat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        #count {
+            font-size: 2em;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
 
+<div class="container">
+    <h1>Contor Zile Fără Fumat</h1>
+    <p>Te-ai lăsat de fumat pe:</p>
+    <input type="date" id="stopDate" value="2025-04-24">
+    <p id="count">Calculăm zilele...</p>
+    <button onclick="updateCount()">Actualizează Contorul</button>
+</div>
+
+<script>
+    function updateCount() {
+        const stopDate = new Date(document.getElementById("stopDate").value);
+        const currentDate = new Date();
+        
+        // Calculăm diferența în zile
+        const diffTime = currentDate - stopDate;
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        
+        // Actualizăm contorul
+        document.getElementById("count").textContent = `Zile fără fumat: ${diffDays}`;
+    }
+
+    // Actualizează automat contorul când se încarcă pagina
+    window.onload = updateCount;
+</script>
+
+</body>
+</html>
